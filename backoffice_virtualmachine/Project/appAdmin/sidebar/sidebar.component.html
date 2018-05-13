@@ -1,0 +1,101 @@
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a [routerLink]="[menuItems[0].path]" class="simple-text">
+            <div class="logo-img">
+                <img src="assets/img/globe.png" />
+            </div>
+            MP5 Traduções
+        </a>
+    </div>
+    <ul class="nav">
+        <li routerLinkActive="active">
+            <a [routerLink]="[menuItems[0].path]">
+                <i class="{{menuItems[0].icon}}"></i>
+                <p>{{menuItems[0].title}}</p>
+            </a>
+        </li>
+        <!--li routerLinkActive="active">
+            <a [routerLink]="[menuItems[5].path]">
+                <i class="{{menuItems[5].icon}}"></i>
+                <p>{{menuItems[5].title}}</p>
+            </a>
+        </li-->
+
+
+        <li routerLinkActive="active">
+            <a class="collapse" data-toggle="collapse" aria-expanded="false" data-target="#preco">
+                <i class="{{menuItems[8].icon}}"></i>
+                <p>Linguagens
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div id="preco" class="collapse">
+                <ul class="grape-sub-menu">
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[8].path]">
+                Preços Traduções
+            </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[9].path]">
+                                Criar Preço                             
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+
+
+
+        <li routerLinkActive="active">
+            <a class="collapse" data-toggle="collapse" aria-expanded="false" data-target="#translate">
+                <i class="{{menuItems[3].icon}}"></i>
+                <p>Traduções
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div id="translate" class="collapse">
+                <ul class="grape-sub-menu">
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[3].path]">
+                                A Decorrer
+                            </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[4].path]">
+                                Finalizadas                               
+                            </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[7].path]">
+                                Pendentes                               
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li routerLinkActive="active">
+            <a class="collapse" data-toggle="collapse" aria-expanded="false" data-target="#dados">
+                <i class="{{menuItems[1].icon}}"></i>
+                <p>Estatísticas
+                    <b class="caret"></b>
+                </p>
+            </a>
+            <div id="dados" class="collapse">
+                <ul class="grape-sub-menu">
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[1].path]">
+                                {{menuItems[1].title}}
+                            </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a [routerLink]="[menuItems[2].path]">
+                               {{menuItems[2].title}}                               
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

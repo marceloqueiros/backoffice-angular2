@@ -1,0 +1,72 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <div *ngIf="isOn">
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <label>Preço</label>
+                                    <input type="text" class="form-control" name="valor" [(ngModel)]="valor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Lingua de Origem</label>
+                                    <input type="text" class="form-control" name="lingua1" [(ngModel)]="lingua1" disabled required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Lingua Final</label>
+                                    <input type="text" class="form-control" name="lingua2" [(ngModel)]="lingua2" disabled required>
+                                </div>
+                                <button class="btn btn-danger pull-right" (click)="cancelar()"><i class="fa fa-ban"></i>Cancelar</button>
+                                <button type="submit" class="btn btn-primary pull-right" (click)="editarPreco(valor,lingua1,lingua2)"><i class="fa fa-save"></i>Guardar</button>
+                                
+                            </form>
+                        </div>
+                        <div class="fresh-datatables">
+                            <div id="datatables_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table cellspacing="0" class="table table-striped table-no-bordered table-hover dataTable dtr-inline">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting"></th>
+                                                    <!--<th class="sorting" name="IdLinguagem1">ID Lingua 1</th>-->
+                                                    <th class="sorting" name="Linguagem1" style="text-align:center;">Lingua 1</th>
+                                                    <!--<th class="sorting" name="IdLinguagem2">ID Lingua 2</th>-->
+                                                    <th class="sorting" name="Linguagem2" style="text-align:center;">Lingua 2</th>
+                                                    <th class="sorting" name="Valor" style="text-align:center;">Preco</th>
+                                                    <th class="sorting" name="" style="text-align:center;">Opções</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let preco of precos; let i = index; let even = even; let odd = odd;" [ngClass]="{ odd: odd, even: even }">
+                                                    <td style="text-align:center;">{{i+1}}</td>
+                                                    <!--<td>{{preco.IdLinguagem1}}</td>-->
+                                                    <td style="text-align:center;">{{preco.Linguagem1}}</td>
+                                                    <!--<td>{{preco.IdLinguagem2}}</td>-->
+                                                    <td style="text-align:center;">{{preco.Linguagem2}}</td>
+                                                    <td style="text-align:center;">{{preco.Valor}}</td>
+                                                    <td style="text-align:center;"><button (click)="onClick(i)"><i class="fa fa-edit"></i></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--<datatable [dataset]=precos [enableFilter]=true>
+                                            <column [value]="'IdLinguagem1'" [header]="'ID Lingua 1'"></column>
+                                            <column [value]="'Linguagem1'" [header]="'Lingua 1'"></column>
+                                            <column [value]="'IdLinguagem2'" [header]="'ID Lingua 2'"></column>
+                                            <column [value]="'Linguagem2'" [header]="'Lingua 2'"></column>
+                                            <column [value]="'Valor'" [header]="'Preco'"></column>
+                                            <column [value]="''" [header]="''"></column>
+                                        </datatable>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

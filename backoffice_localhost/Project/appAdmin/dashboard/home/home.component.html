@@ -1,0 +1,30 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <div style="width:98%; padding-top: 2%; padding-left: 2%;">
+                            <div class="row">
+                                <div class="col-md-7 col-md-offset-2">
+                                    <div class="card" [@cardtable1]>
+                                        <div class="header">
+                                            <h4 class="title" style="text-align:center;"><b>Últimos Pedidos Traduções</b></h4>
+                                        </div>
+                                        <datatable [dataset]=tabela [enableFilter]=false>
+                                            <column [value]="'DataPedido'" [header]="'Data Pedido'"></column>
+                                            <column [value]="'Cliente'" [header]="'Cliente'"></column>
+                                            <column [value]="'LinguaO'" [header]="'Lingua Original'"></column>
+                                            <column [value]="'LinguaF'" [header]="'Lingua Final'"></column>
+                                        </datatable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

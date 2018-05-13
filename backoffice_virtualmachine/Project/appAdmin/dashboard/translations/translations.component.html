@@ -1,0 +1,68 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <div class="toolbar">
+                        </div>
+                        <div class="fresh-datatables">
+                            <div id="datatables_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <!--<table cellspacing="0" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" id="datatables" style="width: 100%;"
+                                            width="100%" role="grid" aria-describedby="datatables_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting">ID</th>
+                                                    <th class="sorting">Tradutor</th>
+                                                    <th class="sorting">Lingua Original</th>
+                                                    <th class="sorting">Lingua Final</th>
+                                                    <th class="sorting">Data Inicio</th>
+                                                    <th class="sorting">Cliente</th>
+                                                    <th class="sorting">Percentagem</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th rowspan="1" colspan="1">ID</th>
+                                                    <th rowspan="1" colspan="1">Tradutor</th>
+                                                    <th rowspan="1" colspan="1">Lingua Original</th>
+                                                    <th rowspan="1" colspan="1">Lingua Final</th>
+                                                    <th rowspan="1" colspan="1">Data Inicio</th>
+                                                    <th rowspan="1" colspan="1">Cliente</th>
+                                                    <th rowspan="1" colspan="1">Percentagem</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <tr *ngFor="let translation of translations; let even = even; let odd = odd;" [ngClass]="{ odd: odd, even: even }">
+                                                    <td tabindex="0" class="sorting_1">{{translation.id}}</td>
+                                                    <td><a href="#/user">{{translation.tradutor}}</a></td>
+                                                    <td>{{translation.linguaO}}</td>
+                                                    <td>{{translation.linguaF}}</td>
+                                                    <td>{{translation.dataI}}</td>
+                                                    <td><a href="#/user">{{translation.cliente}}</a></td>
+                                                    <td>{{translation.percentagem}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>-->
+                                        <datatable [dataset]=translations [enableFilter]=true>
+                                            <column [value]="'Id'" [header]="'Id'"></column>
+                                            <column [value]="'Tradutor'" [header]="'Tradutor'"></column>
+                                            <column [value]="'LinguaO'" [header]="'Lingua Original'"></column>
+                                            <column [value]="'LinguaF'" [header]="'Lingua Final'"></column>
+                                            <column [value]="'DataInicio'" [header]="'Data Inicio'"></column>
+                                            <column [value]="'Cliente'" [header]="'Cliente'"></column>
+                                            <column [value]="'Percentagem'" [header]="'Percentagem'"></column>
+                                        </datatable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

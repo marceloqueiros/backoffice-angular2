@@ -1,0 +1,63 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <div class="toolbar">
+                        </div>
+                        <div class="fresh-datatables">
+                            <div id="datatables_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <!--<table cellspacing="0" class="table table-striped table-no-bordered table-hover dataTable dtr-inline">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting" name="id">ID</th>
+                                                    <th class="sorting" name="tradutor">Tradutor</th>
+                                                    <th class="sorting" name="linguaO">Lingua Original</th>
+                                                    <th class="sorting" name="linguaF">Lingua Final</th>
+                                                    <th class="sorting" name="dataF">Data Tradução</th>
+                                                    <th class="sorting" name="cliente">Cliente</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th rowspan="1" colspan="1">ID</th>
+                                                    <th rowspan="1" colspan="1">Tradutor</th>
+                                                    <th rowspan="1" colspan="1">Lingua Original</th>
+                                                    <th rowspan="1" colspan="1">Lingua Final</th>
+                                                    <th rowspan="1" colspan="1">Data Tradução</th>
+                                                    <th rowspan="1" colspan="1">Cliente</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <tr *ngFor="let tcompleta of TCompletas; let even = even; let odd = odd;" [ngClass]="{ odd: odd, even: even }">
+                                                    <td tabindex="0" class="sorting_1">{{tcompleta.Id}}</td>
+                                                    <td>{{tcompleta.Tradutor}}</td>
+                                                    <td>{{tcompleta.LinguaO}}</td>
+                                                    <td>{{tcompleta.LinguaF}}</td>
+                                                    <td>{{tcompleta.DataFim}}</td>
+                                                    <td>{{tcompleta.Cliente}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>-->
+                                        <datatable [dataset]=TCompletas [enableFilter]=true>
+                                            <column [value]="'Id'" [header]="'Id'"></column>
+                                            <column [value]="'Tradutor'" [header]="'Tradutor'"></column>
+                                            <column [value]="'LinguaO'" [header]="'Lingua Original'"></column>
+                                            <column [value]="'LinguaF'" [header]="'Lingua Final'"></column>
+                                            <column [value]="'DataFim'" [header]="'Data Fim'"></column>
+                                            <column [value]="'Cliente'" [header]="'Cliente'"></column>
+                                        </datatable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="content">
+						<form action="#" method="post">
+							<div class="form-group">
+								<label>Preço</label>
+								<input type="text" class="form-control" name="preco" [(ngModel)]="preco" required>
+							</div>
+							<div class="form-group">
+								<label>Lingua de Origem</label>
+								<input type="text" class="form-control" name="linguaOriginal" [(ngModel)]="linguaOriginal" required>
+							</div>
+
+							<div class="form-group">
+								<label>Lingua Final</label>
+								<input type="text" class="form-control" name="linguaTraducao" [(ngModel)]="linguaTraducao" required>
+							</div>
+								<button type="submit" class="btn btn-primary pull-right" (click)="criarPreco(preco,linguaOriginal,linguaTraducao)"><i class="fa fa-pencil"></i>Criar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

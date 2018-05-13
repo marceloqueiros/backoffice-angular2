@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Mp5Traducoes" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.109.2;Initial Catalog=Mp5Traducoes;User ID=Mp5Traducoes" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Mp5TraducoesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.avaliacoesTecnicos" Member="avaliacoesTecnicos">
+    <Type Name="avaliacoesTecnico">
+      <Column Name="id_avaliacao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="texto" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="avaliacao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_User" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_Ticket" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_Tecnico" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Ticket_avaliacoesTecnico" Member="Ticket" ThisKey="id_Ticket" OtherKey="id_Ticket" Type="Ticket" IsForeignKey="true" />
+      <Association Name="Utilizador_avaliacoesTecnico" Member="Utilizador" ThisKey="ID_Tecnico" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+      <Association Name="Utilizador_avaliacoesTecnico1" Member="Utilizador1" ThisKey="ID_User" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Linguagem" Member="Linguagems">
+    <Type Name="Linguagem">
+      <Column Name="ID_Linguagem" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Linguagem" Member="Linguagem1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Linguagem_Possui" Member="Possuis" ThisKey="ID_Linguagem" OtherKey="ID_Linguagem" Type="Possui" />
+      <Association Name="Linguagem_preco" Member="precos" ThisKey="ID_Linguagem" OtherKey="id_ling_final" Type="preco" />
+      <Association Name="Linguagem_preco1" Member="precos1" ThisKey="ID_Linguagem" OtherKey="id_ling_origem" Type="preco" />
+      <Association Name="Linguagem_texto" Member="textos" ThisKey="ID_Linguagem" OtherKey="Id_Lingua" Type="texto" />
+      <Association Name="Linguagem_texto1" Member="textos1" ThisKey="ID_Linguagem" OtherKey="Id_Lingua_Final" Type="texto" />
+      <Association Name="Linguagem_traducao" Member="traducaos" ThisKey="ID_Linguagem" OtherKey="id_linguagem_final" Type="traducao" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nivel" Member="Nivels">
+    <Type Name="Nivel">
+      <Column Name="ID_Nivel" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nivel" Member="Nivel1" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Association Name="Nivel_Possui" Member="Possuis" ThisKey="ID_Nivel" OtherKey="ID_Nivel" Type="Possui" />
+    </Type>
+  </Table>
+  <Table Name="dbo.notificacao" Member="notificacaos">
+    <Type Name="notificacao">
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_notificacao" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="texto" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="data" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="lida" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TipoNotificacao_notificacao" Member="TipoNotificacao" ThisKey="id_notificacao" OtherKey="id_tiponotificacao" Type="TipoNotificacao" IsForeignKey="true" />
+      <Association Name="Utilizador_notificacao" Member="Utilizador" ThisKey="id_user" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pagamento" Member="Pagamentos">
+    <Type Name="Pagamento">
+      <Column Name="id_pagamento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_traducao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tipo_pagamento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="valor" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="data_Metade_pagamento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="data_pagamento_final" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="data_pagamento_tradutor" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="tipoPagamento_Pagamento" Member="tipoPagamento" ThisKey="tipo_pagamento" OtherKey="id_tipoPagamento" Type="tipoPagamento" IsForeignKey="true" />
+      <Association Name="traducao_Pagamento" Member="traducao" ThisKey="id_traducao" OtherKey="id_traducao" Type="traducao" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Possui" Member="Possuis">
+    <Type Name="Possui">
+      <Column Name="ID_User" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Linguagem" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Nivel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Linguagem_Possui" Member="Linguagem" ThisKey="ID_Linguagem" OtherKey="ID_Linguagem" Type="Linguagem" IsForeignKey="true" />
+      <Association Name="Nivel_Possui" Member="Nivel" ThisKey="ID_Nivel" OtherKey="ID_Nivel" Type="Nivel" IsForeignKey="true" />
+      <Association Name="Utilizador_Possui" Member="Utilizador" ThisKey="ID_User" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.preco" Member="precos">
+    <Type Name="preco">
+      <Column Name="id_ling_origem" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_ling_final" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="valor" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Linguagem_preco" Member="Linguagem" ThisKey="id_ling_final" OtherKey="ID_Linguagem" Type="Linguagem" IsForeignKey="true" />
+      <Association Name="Linguagem_preco1" Member="Linguagem1" ThisKey="id_ling_origem" OtherKey="ID_Linguagem" Type="Linguagem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.respostaTicket" Member="respostaTickets">
+    <Type Name="respostaTicket">
+      <Column Name="idResposta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="texto" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="id_User" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dataRespsota" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ficheiro" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="id_Ticket" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Ticket_respostaTicket" Member="Ticket" ThisKey="id_Ticket" OtherKey="id_Ticket" Type="Ticket" IsForeignKey="true" />
+      <Association Name="Utilizador_respostaTicket" Member="Utilizador" ThisKey="id_User" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.texto" Member="textos">
+    <Type Name="texto">
+      <Column Name="Id_texto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Id_dono" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Lingua" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="conteudo" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="dataPretendida" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Id_Lingua_Final" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="data_Pedido" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="texto_traducao" Member="traducaos" ThisKey="Id_texto" OtherKey="id_texto" Type="traducao" />
+      <Association Name="Linguagem_texto" Member="Linguagem" ThisKey="Id_Lingua" OtherKey="ID_Linguagem" Type="Linguagem" IsForeignKey="true" />
+      <Association Name="Linguagem_texto1" Member="Linguagem1" ThisKey="Id_Lingua_Final" OtherKey="ID_Linguagem" Type="Linguagem" IsForeignKey="true" />
+      <Association Name="Utilizador_texto" Member="Utilizador" ThisKey="Id_dono" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ticket" Member="Tickets">
+    <Type Name="Ticket">
+      <Column Name="id_Ticket" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_User" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="prioridade" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dataAbertura" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="aberto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="texto" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ficheiro" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Ticket_avaliacoesTecnico" Member="avaliacoesTecnicos" ThisKey="id_Ticket" OtherKey="id_Ticket" Type="avaliacoesTecnico" />
+      <Association Name="Ticket_respostaTicket" Member="respostaTickets" ThisKey="id_Ticket" OtherKey="id_Ticket" Type="respostaTicket" />
+      <Association Name="tipoTicket_Ticket" Member="tipoTicket" ThisKey="tipo" OtherKey="id_tipoTicket" Type="tipoTicket" IsForeignKey="true" />
+      <Association Name="Utilizador_Ticket" Member="Utilizador" ThisKey="ID_User" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoNotificacao" Member="TipoNotificacaos">
+    <Type Name="TipoNotificacao">
+      <Column Name="id_tiponotificacao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoNotificacao_notificacao" Member="notificacaos" ThisKey="id_tiponotificacao" OtherKey="id_notificacao" Type="notificacao" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tipoPagamento" Member="tipoPagamentos">
+    <Type Name="tipoPagamento">
+      <Column Name="id_tipoPagamento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="noem" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tipoPagamento_Pagamento" Member="Pagamentos" ThisKey="id_tipoPagamento" OtherKey="tipo_pagamento" Type="Pagamento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tipoTicket" Member="tipoTickets">
+    <Type Name="tipoTicket">
+      <Column Name="id_tipoTicket" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nome" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="tipoTicket_Ticket" Member="Tickets" ThisKey="id_tipoTicket" OtherKey="tipo" Type="Ticket" />
+    </Type>
+  </Table>
+  <Table Name="dbo.traducao" Member="traducaos">
+    <Type Name="traducao">
+      <Column Name="id_traducao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_texto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_linguagem_final" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_user_Tradutor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text_Traduzido" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="N_paragrafo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="prazo" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="data_inicio" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="data_fim" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="feedback" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="coment" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="traducao_Pagamento" Member="Pagamentos" ThisKey="id_traducao" OtherKey="id_traducao" Type="Pagamento" />
+      <Association Name="Linguagem_traducao" Member="Linguagem" ThisKey="id_linguagem_final" OtherKey="ID_Linguagem" Type="Linguagem" IsForeignKey="true" />
+      <Association Name="texto_traducao" Member="texto" ThisKey="id_texto" OtherKey="Id_texto" Type="texto" IsForeignKey="true" />
+      <Association Name="Utilizador_traducao" Member="Utilizador" ThisKey="id_user_Tradutor" OtherKey="ID_User" Type="Utilizador" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Utilizador" Member="Utilizadors">
+    <Type Name="Utilizador">
+      <Column Name="ID_User" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CodigoPostal" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="TokenID_fb" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TokenID_google" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="id_fb" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_google" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Morada" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="NTraducoes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apelido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DataNascimento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Role" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataCriacao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValCode" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="DataBloqueio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Utilizador_avaliacoesTecnico" Member="avaliacoesTecnicos" ThisKey="ID_User" OtherKey="ID_Tecnico" Type="avaliacoesTecnico" />
+      <Association Name="Utilizador_avaliacoesTecnico1" Member="avaliacoesTecnicos1" ThisKey="ID_User" OtherKey="ID_User" Type="avaliacoesTecnico" />
+      <Association Name="Utilizador_notificacao" Member="notificacaos" ThisKey="ID_User" OtherKey="id_user" Type="notificacao" />
+      <Association Name="Utilizador_Possui" Member="Possuis" ThisKey="ID_User" OtherKey="ID_User" Type="Possui" />
+      <Association Name="Utilizador_respostaTicket" Member="respostaTickets" ThisKey="ID_User" OtherKey="id_User" Type="respostaTicket" />
+      <Association Name="Utilizador_texto" Member="textos" ThisKey="ID_User" OtherKey="Id_dono" Type="texto" />
+      <Association Name="Utilizador_Ticket" Member="Tickets" ThisKey="ID_User" OtherKey="ID_User" Type="Ticket" />
+      <Association Name="Utilizador_traducao" Member="traducaos" ThisKey="ID_User" OtherKey="id_user_Tradutor" Type="traducao" />
+    </Type>
+  </Table>
+</Database>
